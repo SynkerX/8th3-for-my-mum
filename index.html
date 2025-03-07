@@ -294,47 +294,7 @@
             </div>
         </div>
     </main>
-    <script>
-        let isDragging = false; // Biến theo dõi trạng thái kéo
-        let offsetX, offsetY;   // Offset vị trí chuột so với lá thư
-        let currentLetter = null; // Phần tử lá thư đang được kéo
-
-        function toggleEnvelope() {
-            let envelope = document.querySelector(".envelope");
-            envelope.classList.toggle("open");
-        }
-
-        function startDragLetter(event) {
-            isDragging = true; // Bắt đầu kéo
-            currentLetter = event.target; // Lưu phần tử lá thư
-
-            // Tính toán offset (vị trí chuột so với góc trên bên trái lá thư)
-            offsetX = event.clientX - currentLetter.offsetLeft;
-            offsetY = event.clientY - currentLetter.offsetTop;
-
-            // Đặt cursor thành "grabbing" khi bắt đầu kéo (tùy chọn, để feedback trực quan)
-            currentLetter.style.cursor = 'grabbing';
-        }
-
-        function dragLetter(event) {
-            if (!isDragging) return; // Nếu không kéo, không làm gì
-
-            event.preventDefault(); // Ngăn chặn kéo mặc định (tránh xung đột)
-
-            let mouseX = event.clientX;
-            let mouseY = event.clientY;
-
-            // Cập nhật vị trí lá thư theo chuột, sử dụng offset
-            currentLetter.style.left = mouseX - offsetX + 'px';
-            currentLetter.style.top = mouseY - offsetY + 'px';
-        }
-
-        function endDragLetter() {
-            isDragging = false; // Kết thúc kéo
-            currentLetter.style.cursor = 'grab'; // Đặt lại cursor thành "grab"
-            currentLetter = null; // Reset biến currentLetter
-        }
-    </script>
+    
     <div class="credit">@ 🍫 MINH KHÔI 🍫</div>
 </body>
 </html>
