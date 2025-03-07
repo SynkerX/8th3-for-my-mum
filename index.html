@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng 8/3</title>
+    <style>
+        /* Import font chữ từ Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap');
+
+        /* CSS cho body */
+        body {
+          background: url('https://i.pinimg.com/736x/ec/bf/72/ecbf722cd23addd6550e0c7513bcee3a.jpg') no-repeat center center/cover; /* Thay hình nền bằng link.png */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+        }
+        
+        
+
+        /* Đặt màu xám cho phần credit */
+.credit {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: #808080; /* Màu xám cho phần credit */
+    text-align: center;
+    position: fixed; /* Đặt phần credit cố định ở dưới cùng màn hình */
+    bottom: 10px; /* Cách dưới 10px */
+    width: 100%; /* Chiếm hết chiều rộng */
+    left: 0; /* Canh lề trái */
+    z-index: 10; /* Đảm bảo phần này nằm trên các phần tử khác */
+}
+/* ------------------------------------- */
+/* Hiệu ứng cầu vồng cho tên "Khôi" trong phần credit */
+.khôi {
+    font-size: 1.5rem; /* Kích thước chữ của tên */
+    font-weight: bold;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); /* Hiệu ứng màu sắc cầu vồng */
+    -webkit-background-clip: text; /* Cắt nền của chữ */
+    color: transparent; /* Làm cho chữ trong suốt để màu nền lộ ra */
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ cho chữ */
+}
+
+
+        /* CSS cho phần trang trí (sticker) */
+        .decorations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .credit {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: rgba(128, 128, 128, 0.7);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+        }
+
+        .decorations span {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: float 5s linear infinite;
+        }
+
+        /* Animation "float" cho sticker */
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { transform: translateY(-50px) scale(1.2); opacity: 0.8; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+
+        /* CSS cho container phong bì */
+        .envelope-container {
+            position: relative;
+            width: 90vw;
+            max-width: 320px;
+            height: auto;
+        }
+
+        /* CSS cho phong bì */
+        .envelope {
+            width: 100%;
+            height: auto;
+            padding-bottom: 56.25%; /* Tỷ lệ khung hình 16:9 */
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            position: relative;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease-in-out;
+            top: 120%;
+        }
+
+        /* CSS cho nắp phong bì */
+        .flap {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(135deg, #ff4d6d, #ff5e78);
+            top: 0;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transition: transform 0.6s ease-in-out;
+            transform-origin: top;
+        }
+        
+        /* CSS cho nơ */
+.ribbon {
+    position: absolute;
+    top: -30px; /* Đặt nơ lên trên bức thư */
+    left: 50%; /* Canh giữa */
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background-color: #ff4d6d; /* Màu sắc của nơ */
+    clip-path: polygon(50% 0%, 0% 50%, 50% 100%, 100% 50%); /* Hình dạng nơ */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* CSS cho các dây nơ */
+.ribbon::before, .ribbon::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color: #ff4d6d;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ribbon::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ribbon::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+        /* CSS cho lá thư - **ĐÃ ĐƠN GIẢN HÓA** */
+        .letter {
+    position: absolute;
+    bottom: -10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background: url('https://i.imgur.com/vfNMt2Y.png') no-repeat center center/cover;
+    border-radius: 15px;
+    min-height: 270px;
+    width: 100%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ffc0cb;
+    cursor: grab; /* Biểu tượng chuột "grab" */
+    touch-action: none; /* Ngăn chặn kéo trang trên mobile */
+    transform: translateY(120px) rotateZ(0deg); /* Dòng này quyết định vị trí */
+    opacity: 0; /* Ẩn ban đầu */
+    transition: transform 2s ease-in-out, opacity 1s; /* Hiệu ứng mở */
+    resize: both;
+    overflow: auto;
+        }
+
+        /* CSS cho tiêu đề thư */
+        .letter h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #e91e63;
+            margin: 0 0 10px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* CSS cho đoạn văn bản trong thư */
+        .letter p {
+            font-size: 1.1rem;
+            color: #790e8b;
+            margin-top: 10px;
+            text-align: center;
+            max-width: 80%;
+            font-weight: bold;
+            line-height: 0.9;
+        }
+
+        /* CSS cho hiệu ứng mở phong bì */
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+        }
+
+        .envelope.open .letter {
+            transform: translateY(-220px) rotateZ(0deg);
+            opacity: 1;
+            animation: pullOutLetter 2s ease-in-out forwards;
+        }
+
+        /* Animation "pullOutLetter" cho thư */
+        @keyframes pullOutLetter {
+            0% { transform: translateY(120px) rotateZ(0deg); opacity: 0; }
+            30% { transform: translateY(60px) rotateZ(3deg); opacity: 0.5; }
+            60% { transform: translateY(-30px) rotateZ(-3deg); opacity: 0.8; }
+            100% { transform: translateY(-220px) rotateZ(0deg); opacity: 1; }
+        }
+
+        /* Media query cho màn hình nhỏ (mobile) */
+        @media (max-width: 768px) {
+            .envelope-container {
+                width: 95vw;
+            }
+            .letter {
+                font-size: 1rem;
+                padding: 20px;
+            }
+            .decorations span {
+                font-size: 1.8rem; /* Giảm kích thước sticker trên mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+      <audio autoplay loop>
+            <source src="https://store-screenapp-production.storage.googleapis.com/vid/67cb10b94c6f3df249532b00/b5d4e746-8b68-4dc0-92c8-47a4b12abe2c.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EINEQV5X2QGY62PSZMBMUR7IGGVLKNDB6ABP5GL6O6FKO76DWA2IE3SB%2F20250307%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250307T152900Z&X-Amz-Expires=604800&X-Amz-Signature=ec5dd97a815a2dfa09ffc29267932df6f1d274cf5b5f736b47b7c3dd431188e1&X-Amz-SignedHeaders=host&response-content-type=attachment%3B%20filename%3D%22b5d4e746-8b68-4dc0-92c8-47a4b12abe2c.mp3%22%3B%20filename%2A%3D%20UTF-8%27%27utomp3.com%2520_%2520QUN%2520AP%2520%2520C%2520M%2520CA%2520M%2520%2520OFFICIAL%2520MV%2520.mp3.mp3%3B#t=0," type="audio/mp3">
+            Trình duyệt của bạn không hỗ trợ audio.
+        </audio>
+        
+        <div class="decorations">
+            <span style="top: 10vh; left: 7vw;">🌸</span>
+            <span style="top: 20vh; left: 17vw;">🌷</span>
+            <span style="top: 5vh; left: 27vw;">🌹</span>
+            <span style="top: 15vh; left: 37vw;">💐</span>
+            <span style="top: 25vh; left: 47vw;">🌺</span>
+            <span style="top: 10vh; left: 57vw;">🌼</span>
+            <span style="top: 20vh; left: 67vw;">💄</span>
+            <span style="top: 5vh; left: 77vw;">💅</span>
+            <span style="top: 15vh; left: 87vw;">👠</span>
+            <span style="top: 25vh; left: 97vw;">👜</span>
+
+            <span style="top: 35vh; left: 4vw;">💎</span>
+            <span style="top: 45vh; left: 14vw;">👑</span>
+            <span style="top: 30vh; left: 24vw;">🎀</span>
+            <span style="top: 40vh; left: 34vw;">💖</span>
+            <span style="top: 50vh; left: 44vw;">💕</span>
+            <span style="top: 32vh; left: 54vw;">❤️</span>
+            <span style="top: 42vh; left: 64vw;">💗</span>
+            <span style="top: 52vh; left: 74vw;">💘</span>
+            <span style="top: 38vh; left: 84vw;">🌸</span>
+            <span style="top: 48vh; left: 94vw;">🌷</span>
+
+            <span style="top: 60vh; left: 9vw;">🌹</span>
+            <span style="top: 70vh; left: 19vw;">💐</span>
+            <span style="top: 55vh; left: 29vw;">🌺</span>
+            <span style="top: 65vh; left: 39vw;">🌼</span>
+            <span style="top: 75vh; left: 49vw;">💄</span>
+            <span style="top: 58vh; left: 59vw;">💅</span>
+            <span style="top: 68vh; left: 69vw;">👠</span>
+            <span style="top: 78vh; left: 79vw;">👜</span>
+            <span style="top: 62vh; left: 89vw;">💎</span>
+            <span style="top: 72vh; left: 99vw;">👑</span>
+
+            <span style="top: 80vh; left: 5vw;">🎀</span>
+            <span style="top: 90vh; left: 15vw;">💖</span>
+            <span style="top: 85vh; left: 25vw;">💕</span>
+            <span style="top: 95vh; left: 35vw;">❤️</span>
+            <span style="top: 82vh; left: 45vw;">💗</span>
+            <span style="top: 92vh; left: 55vw;">💘</span>
+            <span style="top: 88vh; left: 65vw;">🌸</span>
+            <span style="top: 98vh; left: 75vw;">🌷</span>
+            <span style="top: 83vh; left: 85vw;">🌹</span>
+            <span style="top: 93vh; left: 95vw;">💐</span>
+
+        </div>
+        <div class="envelope-container">
+            <div class="envelope" onclick="toggleEnvelope()" role="button" aria-label="Mở thiệp chúc mừng">
+                <div class="flap"></div>
+                <div class="letter" onmousedown="startDragLetter(event)" onmouseup="endDragLetter()" onmousemove="dragLetter(event)" ontouchstart="startDragLetter(event)" ontouchend="endDragLetter()" ontouchmove="dragLetter(event)">
+                    <h1>Con Chúc Mừng Mẹ Nuôi Ngày 8/3 ạ🎉🌸</h1>
+                    <p>Chúc mừng người mẹ tuyệt vời nhất trên thế giới một ngày 8/3 thật ý nghĩa, tràn ngập niềm vui và hạnh phúc! </p>
+                    <p>Con yêu mẹ nuôi nhiều! Cảm ơn mẹ đã luôn ở bên cạnh con. con mong rằng bản nhạc này sẽ thật đầy đủ ý nghĩa ạ!.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        let isDragging = false; // Biến theo dõi trạng thái kéo
+        let offsetX, offsetY;   // Offset vị trí chuột so với lá thư
+        let currentLetter = null; // Phần tử lá thư đang được kéo
+
+        function toggleEnvelope() {
+            let envelope = document.querySelector(".envelope");
+            envelope.classList.toggle("open");
+        }
+
+        function startDragLetter(event) {
+            isDragging = true; // Bắt đầu kéo
+            currentLetter = event.target; // Lưu phần tử lá thư
+
+            // Tính toán offset (vị trí chuột so với góc trên bên trái lá thư)
+            offsetX = event.clientX - currentLetter.offsetLeft;
+            offsetY = event.clientY - currentLetter.offsetTop;
+
+            // Đặt cursor thành "grabbing" khi bắt đầu kéo (tùy chọn, để feedback trực quan)
+            currentLetter.style.cursor = 'grabbing';
+        }
+
+        function dragLetter(event) {
+            if (!isDragging) return; // Nếu không kéo, không làm gì
+
+            event.preventDefault(); // Ngăn chặn kéo mặc định (tránh xung đột)
+
+            let mouseX = event.clientX;
+            let mouseY = event.clientY;
+
+            // Cập nhật vị trí lá thư theo chuột, sử dụng offset
+            currentLetter.style.left = mouseX - offsetX + 'px';
+            currentLetter.style.top = mouseY - offsetY + 'px';
+        }
+
+        function endDragLetter() {
+            isDragging = false; // Kết thúc kéo
+            currentLetter.style.cursor = 'grab'; // Đặt lại cursor thành "grab"
+            currentLetter = null; // Reset biến currentLetter
+        }
+    </script>
+    <div class="credit">@ 🍫 MINH KHÔI 🍫</div>
+</body>
+</html>
